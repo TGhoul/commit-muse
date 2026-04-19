@@ -4,6 +4,23 @@
   "description": "AI powered Git commit message generator for Visual Studio Code.",
   "version": "0.0.1",
   "publisher": "CyberMuse",
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "source control",
+    "anthropic",
+    "openai"
+  ],
+  "homepage": "https://github.com/TGhoul/commit-muse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TGhoul/commit-muse/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TGhoul/commit-muse.git"
+  },
   "engines": {
     "vscode": "^1.99.0"
   },
