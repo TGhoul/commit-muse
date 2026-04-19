@@ -1,0 +1,178 @@
+{
+  "name": "commit-muse",
+  "displayName": "Commit Muse",
+  "description": "AI powered Git commit message generator for Visual Studio Code.",
+  "version": "0.0.1",
+  "publisher": "CyberMuse",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "AI",
+    "SCM Providers",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "icon": "resources/logo.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "commitMuse.generateMessage",
+        "title": "Commit Muse: Generate Message",
+        "icon": {
+          "light": "resources/icons/generate-light.svg",
+          "dark": "resources/icons/generate-dark.svg"
+        }
+      },
+      {
+        "command": "commitMuse.generateMessageWithHint",
+        "title": "Commit Muse: Generate Message With Hint",
+        "icon": {
+          "light": "resources/icons/generate-with-hint-light.svg",
+          "dark": "resources/icons/generate-with-hint-dark.svg"
+        }
+      },
+      {
+        "command": "commitMuse.verifyProvider",
+        "title": "Commit Muse: Verify Provider"
+      },
+      {
+        "command": "commitMuse.openSettings",
+        "title": "Commit Muse: Open Settings"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "commitMuse.generateMessage",
+          "group": "navigation"
+        },
+        {
+          "command": "commitMuse.generateMessageWithHint",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Commit Muse",
+      "properties": {
+        "commitMuse.provider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai-compatible"
+          ],
+          "default": "anthropic",
+          "description": "Active AI provider."
+        },
+        "commitMuse.model": {
+          "type": "string",
+          "default": "claude-3-5-sonnet-latest",
+          "description": "Model identifier for the active provider."
+        },
+        "commitMuse.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Optional base URL for the active provider."
+        },
+        "commitMuse.locale": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh-CN",
+            "zh-TW",
+            "ja",
+            "ko",
+            "es",
+            "fr",
+            "de",
+            "pt-BR",
+            "it",
+            "ru",
+            "ar",
+            "hi",
+            "nl",
+            "tr",
+            "pl",
+            "uk",
+            "vi",
+            "id"
+          ],
+          "enumItemLabels": [
+            "English",
+            "简体中文",
+            "繁體中文",
+            "日本語",
+            "한국어",
+            "Español",
+            "Français",
+            "Deutsch",
+            "Português (Brasil)",
+            "Italiano",
+            "Русский",
+            "العربية",
+            "हिन्दी",
+            "Nederlands",
+            "Türkçe",
+            "Polski",
+            "Українська",
+            "Tiếng Việt",
+            "Bahasa Indonesia"
+          ],
+          "default": "en",
+          "description": "Language used for generated commit messages."
+        },
+        "commitMuse.timeoutMs": {
+          "type": "number",
+          "default": 30000,
+          "minimum": 1000,
+          "description": "Request timeout in milliseconds."
+        },
+        "commitMuse.maxDiffChars": {
+          "type": "number",
+          "default": 12000,
+          "minimum": 1000,
+          "description": "Maximum diff characters sent to the model."
+        },
+        "commitMuse.promptPreset": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "conventional",
+            "gitmoji",
+            "custom"
+          ],
+          "enumItemLabels": [
+            "Basic",
+            "Conventional",
+            "GitMoji",
+            "Custom"
+          ],
+          "default": "basic",
+          "description": "Built-in prompt preset for commit generation."
+        },
+        "commitMuse.promptTemplate": {
+          "type": "string",
+          "default": "Write a concise Git commit title in {locale} for the following staged diff. Use present tense, no code fences, and do not prefix the answer with explanations. Keep it under 74 characters when possible.\n{Use this hint to improve the commit message: $hint}\n{diff}",
+          "editPresentation": "multilineText",
+          "description": "Custom prompt template used when promptPreset is set to custom."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "check": "tsc -p . --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/vscode": "^1.99.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.71",
+    "@ai-sdk/openai": "^3.0.53",
+    "ai": "^6.0.168"
+  }
+}
