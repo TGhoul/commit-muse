@@ -179,12 +179,14 @@
     }
   },
   "scripts": {
-    "build": "tsc -p .",
-    "check": "tsc -p . --noEmit"
+    "build": "node ./scripts/build.mjs",
+    "check": "tsc -p . --noEmit",
+    "vscode:prepublish": "npm run check && npm run build"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
     "@types/vscode": "^1.99.0",
+    "esbuild": "^0.25.4",
     "typescript": "^5.8.3"
   },
   "dependencies": {
