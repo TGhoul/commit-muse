@@ -3,7 +3,7 @@
 [English](./README.md)
 
 <p align="center">
-  <img src="./resources/logo.png" alt="Commit Muse logo" width="128" />
+  <img src="https://raw.githubusercontent.com/TGhoul/commit-muse/main/resources/logo.png" alt="Commit Muse logo" width="128" />
 </p>
 
 Commit Muse 会根据已暂存的改动，在 VS Code 里生成 Git commit message。它直接挂在 Source Control 里，支持 Anthropic 和 OpenAI-compatible 接口，生成后会把结果写进 SCM 输入框。
