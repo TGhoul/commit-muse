@@ -27,7 +27,6 @@ export async function generateAndWriteCommitMessage(
     promptPreset: config.promptPreset,
     diffLength: diffResult.diff.length,
     diffTruncated: diffResult.truncated,
-    repository: diffResult.repository.rootUri.fsPath,
     hasHint: Boolean(hint?.trim()),
   });
 
@@ -54,19 +53,16 @@ export async function generateAndWriteCommitMessage(
     const rawText = await generateTextWithActiveProvider(context, prompt, controller.signal);
     logDebug('Raw model response received', {
       rawTextLength: rawText.length,
-      rawTextPreview: rawText.slice(0, 300),
     });
 
     const message = sanitizeCommitMessage(rawText);
     logDebug('Sanitized commit message', {
       sanitizedLength: message.length,
-      sanitizedPreview: message.slice(0, 300),
     });
 
     if (!message) {
       logDebug('Sanitized message is empty', {
         rawTextLength: rawText.length,
-        rawTextPreview: rawText.slice(0, 300),
       });
       throw new Error('The model returned an empty commit message.');
     }

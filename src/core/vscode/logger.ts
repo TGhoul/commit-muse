@@ -29,7 +29,7 @@ export function logError(message: string, error: unknown, details?: Record<strin
   }
 
   if (error instanceof Error) {
-    logger.appendLine(error.stack || error.message);
+    logger.appendLine(`${error.name}: ${error.message}`);
     return;
   }
 

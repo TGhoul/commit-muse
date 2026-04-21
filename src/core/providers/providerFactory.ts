@@ -16,7 +16,6 @@ export async function generateTextWithActiveProvider(
   logDebug('Starting provider request', {
     provider: config.provider,
     model: config.model,
-    baseUrl: config.baseUrl || null,
     promptLength: prompt.length,
     hasApiKey: Boolean(apiKey),
   });
