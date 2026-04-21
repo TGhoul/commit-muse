@@ -3,7 +3,7 @@
 [简体中文](./README.zh-CN.md)
 
 <p align="center">
-  <img src="./resources/logo.png" alt="Commit Muse logo" width="128" />
+  <img src="https://raw.githubusercontent.com/TGhoul/commit-muse/main/resources/logo.png" alt="Commit Muse logo" width="128" />
 </p>
 
 Commit Muse generates Git commit messages from staged changes inside VS Code. It lives in Source Control, supports Anthropic and OpenAI-compatible providers, and writes the result straight into the SCM input box.
